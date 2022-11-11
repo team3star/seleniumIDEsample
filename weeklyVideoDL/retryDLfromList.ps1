@@ -7,9 +7,7 @@ if ( -not ( Test-Path ./sampleLogs/ )){
 
 $logfile = './sampleLogs/next_dl_ids' + (Get-Date -Format "yyyyMMdd-HHmmss") + '.txt'
 
-$htmldata = iwr "https://www.twidouga.net/ranking_tweek.php"
-
-$videoList = $htmldata.links.href | sls 'video.twimg.com' | Sort-Object | Get-Unique;
+$videoList = Get-Content ./retryList.txt
 
 foreach($fileURL in $videoList) {
 
